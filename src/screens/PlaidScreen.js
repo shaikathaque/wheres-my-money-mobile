@@ -50,11 +50,7 @@ export default class PlaidScreen extends React.Component {
 
   exchangePublicToken(publicToken, institution) {
     const config = {
-<<<<<<< HEAD
       url: `${Config.REACT_APP_CURRENT_HOST}exchangePublicToken`,
-=======
-      url: Config.REACT_APP_PROD_EXCHANGEPUBLICTOKEN,
->>>>>>> create working version on production environment
       payload: qs.stringify({
         publicToken,
         institution,
