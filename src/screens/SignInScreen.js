@@ -6,9 +6,11 @@ import axios from 'axios';
 import qs from 'qs';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { auth } from '../../firebase';
-import Config from '../../config.json';
+import Config from '../../configProduction.json';
 import store from '../store/userStore';
 import Spinner from '../components/Spinner';
+
+import { ENVKEY } from 'react-native-dotenv';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,6 +36,7 @@ export default class App extends React.Component {
     headerLeft: null,
   };
   constructor() {
+    console.log(ENVKEY);
     super();
     this.state = {
       user: null,
@@ -48,13 +51,14 @@ export default class App extends React.Component {
     // authenticate using expo Google API
     Google.logInAsync({
       behavior: 'web',
-      iosClientId: Config.REACT_APP_IOS_CLIENT_ID,
-      iosStandaloneAppClientId: Config.REACT_APP_IOS_STANDALONE_APP_CLIENT_ID,
+      iosClientId: Config.REACT_APP_IOS_PROD_CLIENT_ID,
+      iosStandaloneAppClientId: Config.REACT_APP_IOS_PROD_STANDALONE_APP_CLIENT_ID,
       scopes: ['profile', 'email', 'https://www.googleapis.com/auth/calendar'],
     })
       .then((result) => {
         if (result.type === 'success') {
           // authenticate locally with firebase
+          console.log(result);
           const credential = firebase.auth.GoogleAuthProvider.credential(result.idToken);
           firebase.auth().signInWithCredential(credential)
             .then(() => this.addUser(result.accessToken))

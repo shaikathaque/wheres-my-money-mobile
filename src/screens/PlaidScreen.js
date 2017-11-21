@@ -3,7 +3,7 @@ import { StyleSheet, View, Button } from 'react-native';
 // import PlaidAuthenticator from 'react-native-plaid-link';
 import axios from 'axios';
 import qs from 'qs';
-import Config from '../../config.json';
+import Config from '../../configProduction.json';
 import store from '../store/userStore';
 import PlaidAuthenticator from '../components/PlaidLink';
 import Spinner from '../components/Spinner';
@@ -50,7 +50,11 @@ export default class PlaidScreen extends React.Component {
 
   exchangePublicToken(publicToken, institution) {
     const config = {
+<<<<<<< HEAD
       url: `${Config.REACT_APP_CURRENT_HOST}exchangePublicToken`,
+=======
+      url: Config.REACT_APP_PROD_EXCHANGEPUBLICTOKEN,
+>>>>>>> create working version on production environment
       payload: qs.stringify({
         publicToken,
         institution,

@@ -15,7 +15,7 @@ import {
 import axios from 'axios';
 import qs from 'qs';
 import store from '../store/userStore';
-import Config from '../../config.json';
+import Config from '../../configProduction.json';
 
 export default class SettingsScreen extends React.Component {
 
