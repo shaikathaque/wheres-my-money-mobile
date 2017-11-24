@@ -10,8 +10,6 @@ import Config from '../../configProduction.json';
 import store from '../store/userStore';
 import Spinner from '../components/Spinner';
 
-import { ENVKEY } from 'react-native-dotenv';
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -36,7 +34,6 @@ export default class App extends React.Component {
     headerLeft: null,
   };
   constructor() {
-    console.log(ENVKEY);
     super();
     this.state = {
       user: null,
